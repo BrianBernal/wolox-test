@@ -1,14 +1,19 @@
+//  libraries
 import React from 'react';
+
+//  styles
+import { ThemeProvider } from 'styled-components';
+import { theme, GlobalStyle } from 'styles/theme';
+
+// routes
+import Routes from './routes/Routes';
 
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Routes />
+    </ThemeProvider>
   );
 }
 
