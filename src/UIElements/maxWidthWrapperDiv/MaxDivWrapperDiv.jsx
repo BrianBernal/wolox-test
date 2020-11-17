@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 // styles
 import ContainerDiv from './styles';
 
-export default function MaxDivWrapperDiv({ children, className }) {
+export default function MaxDivWrapperDiv({ children, className, variant = 'section' }) {
   return (
-    <ContainerDiv className={className}>
+    <ContainerDiv className={className} as={variant}>
       {children}
     </ContainerDiv>
   );
@@ -16,8 +16,10 @@ export default function MaxDivWrapperDiv({ children, className }) {
 MaxDivWrapperDiv.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  variant: PropTypes.string,
 };
 
 MaxDivWrapperDiv.defaultProps = {
   className: null,
+  variant: 'section',
 };

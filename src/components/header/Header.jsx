@@ -12,7 +12,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const show = window.scrollY > 102;
+      const show = window.scrollY > 70;
       if (show) {
         setScrollUp(false);
       } else {
@@ -27,8 +27,8 @@ export default function Header() {
 
   return (
     <WrapperDiv scrollUp={scrollUp}>
-      <ContainerHeader>
-        <img src={logoFullColor} alt='logo wolox' width='200px' />
+      <ContainerHeader scrollUp={scrollUp}>
+        <img src={logoFullColor} alt='logo wolox' width='171px' />
         <MenuNav>
           <NavLinkRouter exact to='/' className='menuItem' activeClassName='activeMenuItem'>Inicio</NavLinkRouter>
           <NavLinkRouter exact to='/' className='menuItem' activeClassName='activeMenuItem'>Beneficios</NavLinkRouter>

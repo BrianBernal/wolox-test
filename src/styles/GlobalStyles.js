@@ -13,6 +13,8 @@ import firaBoldLightItalic from 'assets/Fonts/Fira_Sans/FiraSans-LightItalic.ttf
 
 //  Montserrat fonts
 import montserratRegular from 'assets/Fonts/Montserrat/Montserrat-Regular.ttf';
+import montserratMedium from 'assets/Fonts/Montserrat/Montserrat-Medium.ttf';
+import montserratMediumItalic from 'assets/Fonts/Montserrat/Montserrat-MediumItalic.ttf';
 import montserratBold from 'assets/Fonts/Montserrat/Montserrat-Bold.ttf';
 import montserratSemiBold from 'assets/Fonts/Montserrat/Montserrat-SemiBold.ttf';
 import montserratItalic from 'assets/Fonts/Montserrat/Montserrat-Italic.ttf';
@@ -93,6 +95,18 @@ export default createGlobalStyle`
   }
   @font-face {
     font-family: montserrat;
+    src: url(${montserratMedium}) format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: montserrat;
+    src: url(${montserratMediumItalic}) format('truetype');
+    font-weight: 500;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: montserrat;
     src: url(${montserratSemiBold}) format('truetype');
     font-weight: 600;
     font-style: normal;
@@ -109,12 +123,12 @@ export default createGlobalStyle`
     font-weight: bold;
     font-style: italic;
   }
-  /* @font-face {
+  @font-face {
     font-family: montserrat;
     src: url(${montserratExtraBold}) format('truetype');
-    font-weight: bolder;
+    font-weight: 900;
     font-style: normal;
-  } */
+  }
   @font-face {
     font-family: montserrat;
     src: url(${montserratExtraBoldItalic}) format('truetype');
@@ -144,7 +158,22 @@ export default createGlobalStyle`
   }
 
   h1 {
-    font-size: 42px;
+    font-size: 38px;
+  }
+  h2 {
+    font-size: 36px;
+  }
+  h3 {
+    font-size: 34px;
+  }
+  h4 {
+    font-size: 32px;
+  }
+  h5 {
+    font-size: 30px;
+  }
+  h6 {
+    font-size: 28px;
   }
 
   button {

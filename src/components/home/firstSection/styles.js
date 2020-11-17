@@ -6,19 +6,19 @@ import bgImage from 'assets/Backgrounds/Bg_Header@3x.png';
 import bgIlustraHero from 'assets/Img Hero/Ic_ilustra_Hero.png';
 
 //  components
-import MaxDivWrapperDiv from 'components/maxWidthWrapperDiv/MaxDivWrapperDiv';
+import MaxDivWrapperDiv from 'UIElements/maxWidthWrapperDiv/MaxDivWrapperDiv';
 
-export const WrapperDiv = styled(MaxDivWrapperDiv)`
+export const WelcomeWrapperDiv = styled(MaxDivWrapperDiv)`
   background: url(${bgImage}) no-repeat center center;
   background-size: contain;
   height: 88vh;
   max-height: 45rem;
+  margin-bottom: 4rem;
 
   .welcome-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 5rem;
   }
 `;
 
@@ -38,5 +38,6 @@ export const ImageDiv = styled.div`
   width: 400px;
   height: 400px;
   transform: scaleX(-1);
-  margin-right: 5rem;
+  margin-right: 6rem;
+  margin-top: 6rem;
 `;
