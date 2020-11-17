@@ -8,6 +8,7 @@ export default {
     background: {
       light: '#fff',
       dark: '#f2f5fa',
+      transparent: 'rgba(0, 0, 0, 0)',
     },
   },
 };

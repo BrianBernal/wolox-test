@@ -2,15 +2,15 @@
 import styled from 'styled-components';
 
 //  components
-import MaxDivWrapperDiv from 'UIElements/maxWidthWrapperDiv/MaxDivWrapperDiv';
+import MaxDivWrapperSection from 'UIElements/WrapperSection/WrapperSection';
 
 // images
 import woloxWorker from 'assets/img_woloxer@3x.png';
 
-export const WorkingWrapperDiv = styled(MaxDivWrapperDiv)`
+export const WorkingWrapperSection = styled(MaxDivWrapperSection)`
   display: flex;
   justify-content: center;
-  & > .content {
+  & > .working-container {
     display: flex;
     justify-content: center;
     max-width: 1366px;

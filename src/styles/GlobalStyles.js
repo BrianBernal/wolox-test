@@ -178,13 +178,13 @@ export default createGlobalStyle`
 
   button {
     min-width: 11rem;
+    height: 40px;
     border-radius: 35px;
     border: ${theme.palette.blue} solid 1px;
-    background-color: ${theme.palette.background.light};
+    background-color: rgba(0, 0, 0, 0);
     color: ${theme.palette.blue};
     font-family: montserrat, fira, 'Times New Roman', Times, serif;
     font-size: 0.8rem;
-    height: 40px;
     font-weight: bold;
   }
 `;

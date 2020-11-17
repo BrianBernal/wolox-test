@@ -3,23 +3,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // styles
-import ContainerDiv from './styles';
+import ContainerSection from './styles';
 
-export default function MaxDivWrapperDiv({ children, className, variant = 'section' }) {
+export default function WrapperSection({ children, className, variant }) {
   return (
-    <ContainerDiv className={className} as={variant}>
+    <ContainerSection className={className} as={variant}>
       {children}
-    </ContainerDiv>
+    </ContainerSection>
   );
 }
 
-MaxDivWrapperDiv.propTypes = {
+WrapperSection.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   variant: PropTypes.string,
 };
 
-MaxDivWrapperDiv.defaultProps = {
+WrapperSection.defaultProps = {
   className: null,
   variant: 'section',
 };

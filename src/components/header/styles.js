@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import MaxDivWrapperDiv from 'UIElements/maxWidthWrapperDiv/MaxDivWrapperDiv';
+import WrapperSection from 'UIElements/WrapperSection/WrapperSection';
 
-export const WrapperDiv = styled(MaxDivWrapperDiv)`  
+export const HeaderWrapperSection = styled(WrapperSection)`  
   position: fixed;
   z-index: 999;
   background-color: ${({ scrollUp }) => (scrollUp ? 'initial' : '#fff')};
@@ -10,7 +10,7 @@ export const WrapperDiv = styled(MaxDivWrapperDiv)`
   transition-duration: 0.5s;
 `;
 
-export const ContainerHeader = styled.header`
+export const HeaderDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

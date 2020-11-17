@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export default styled.div`
+export default styled.section`
   margin: 0;
   padding: 0;
   display: flex;

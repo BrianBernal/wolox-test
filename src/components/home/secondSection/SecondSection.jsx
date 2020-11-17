@@ -3,21 +3,22 @@ import React from 'react';
 
 //  components
 import Typography from 'UIElements/typography/Typography';
+import Button from 'UIElements/button/Button';
 
 //  styles
-import { WorkingWrapperDiv, Box } from './styles';
+import { WorkingWrapperSection, Box } from './styles';
 
 export default function SecondSection() {
   return (
-    <WorkingWrapperDiv>
-      <div className='content'>
+    <WorkingWrapperSection>
+      <div className='working-container'>
         <Box withBgImage width='55%'>
           <Typography variant='h1' weight='bold' color='green' className='bigTitle'>
             350 +
             <Typography variant='span' color='blue'> Woloxers</Typography>
           </Typography>
           <Typography color='secondary'>@Wolox</Typography>
-          <button type='button'>Siguenos</button>
+          <Button type='button' size='big' fontColor='secondary'>Siguenos</Button>
         </Box>
         <Box>
           <Typography variant='h1' weight='500'>
@@ -28,6 +29,6 @@ export default function SecondSection() {
           </Typography>
         </Box>
       </div>
-    </WorkingWrapperDiv>
+    </WorkingWrapperSection>
   );
 }
