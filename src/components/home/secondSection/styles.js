@@ -10,6 +10,7 @@ import woloxWorker from 'assets/img_woloxer@3x.png';
 export const WorkingWrapperSection = styled(MaxDivWrapperSection)`
   display: flex;
   justify-content: center;
+  padding-bottom: 3rem;
   & > .working-container {
     display: flex;
     justify-content: center;
