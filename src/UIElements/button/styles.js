@@ -7,7 +7,7 @@ export const sizes = {
     fontSize: '0.8rem',
   },
   big: {
-    minWidth: '12rem',
+    minWidth: '14rem',
     height: '50px',
     fontSize: '1rem',
   },

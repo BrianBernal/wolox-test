@@ -5,6 +5,7 @@ import lcWorkshops from './Ic_Workshops.svg';
 import lcDrinkSnacks from './Ic_DrinkSnacks.svg';
 import lcLaptop from './Ic_laptop.svg';
 import lcBrain from './Ic_brain.svg';
+import lcWoloxFooter from './Ic_Wolox_Footer.svg';
 
 export {
   logoFullColor,
@@ -14,4 +15,5 @@ export {
   lcDrinkSnacks,
   lcLaptop,
   lcBrain,
+  lcWoloxFooter,
 };
