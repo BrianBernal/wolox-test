@@ -19,7 +19,15 @@ export default function FourthSection() {
         <Typography variant='h4' weight='500'>
           Te invitamos a ver mas informacion
         </Typography>
-        <Button type='button' bgColor='blue' fontColor='secondary' size='big'>Conocer mas</Button>
+        <Button
+          bgColor='blue'
+          fontColor='secondary'
+          size='big'
+          variant='hyperlink'
+          href='https://www.wolox.com.ar/'
+        >
+          Conocer mas
+        </Button>
         <Footer />
       </div>
     </ThanksWrapperSection>

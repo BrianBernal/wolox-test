@@ -18,7 +18,14 @@ export default function SecondSection() {
             <Typography variant='span' color='blue'> Woloxers</Typography>
           </Typography>
           <Typography color='secondary'>@Wolox</Typography>
-          <Button type='button' size='big' fontColor='secondary'>Siguenos</Button>
+          <Button
+            size='big'
+            fontColor='secondary'
+            variant='hyperlink'
+            href='https://twitter.com/Wolox'
+          >
+            Siguenos
+          </Button>
         </Box>
         <Box>
           <Typography variant='h1' weight='500'>

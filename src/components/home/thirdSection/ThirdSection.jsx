@@ -12,13 +12,13 @@ export default function ThirdSection() {
   const emoji = ';)';
   return (
     <BenefitsWrapperSection>
-      <div className='benefits-container'>
+      <div className='benefits-container' id='benefits'>
         <Typography variant='h5' weight='500'>Entre los beneficios que ofrecemos se encuentran
           <Typography color='blue' variant='span'> {emoji}</Typography>
         </Typography>
         <BenefitsListContainerDiv cols={benefitsItems.length}>
-          {benefitsItems.map(({ name, image }) => <img src={image} alt={name} />)}
-          {benefitsItems.map(({ name }) => <Typography variant='p'>{name}</Typography>)}
+          {benefitsItems.map(({ name, image }) => <img src={image} alt={name} key={`image-${name}`} />)}
+          {benefitsItems.map(({ name }) => <Typography variant='p' key={`name-${name}`}>{name}</Typography>)}
         </BenefitsListContainerDiv>
         <Divider />
       </div>

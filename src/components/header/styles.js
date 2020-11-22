@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import WrapperSection from 'UIElements/WrapperSection/WrapperSection';
 
 export const HeaderWrapperSection = styled(WrapperSection)`  
@@ -28,7 +28,7 @@ export const MenuNav = styled.nav`
   width: max-content;
 `;
 
-export const NavLinkRouter = styled(NavLink)`
+export const Link = styled.a`
   text-decoration: none;
   color: ${({ theme }) => theme.palette.text};
   font-weight: 600;

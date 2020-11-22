@@ -148,6 +148,10 @@ export default createGlobalStyle`
     font-style: italic;
   }
 
+  html, body, section, footer, aside, div {
+    scroll-behavior: smooth;
+  }
+
   body {
     font-family: montserrat, fira, 'Times New Roman', Times, serif;
     font-size: 20px;
