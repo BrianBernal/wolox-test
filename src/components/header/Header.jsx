@@ -9,11 +9,12 @@ import Button from 'UIElements/button/Button';
 //  styles
 import { logoFullColor } from 'assets';
 import {
-  HeaderWrapperSection, HeaderDiv, MenuNav, Link,
+  HeaderWrapperSection, HeaderDiv, MenuNav, Link, MenuIcon,
 } from './styles';
 
 export default function Header() {
   const [scrollUp, setScrollUp] = useState(true);
+  const [openMenu, setOpenMenu] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,10 +34,11 @@ export default function Header() {
   }, []);
 
   return (
-    <HeaderWrapperSection scrollUp={scrollUp}>
+    <HeaderWrapperSection scrollUp={scrollUp} openMenu={openMenu}>
       <HeaderDiv scrollUp={scrollUp}>
         <img src={logoFullColor} alt='logo wolox' width='171px' />
-        <MenuNav>
+        <MenuIcon onClick={() => setOpenMenu((open) => !open)} />
+        <MenuNav openMenu={openMenu}>
           <Link href='#start' isActive={false}>Inicio</Link>
           <Link href='#benefits' isActive={false}>Beneficios</Link>
           <Link as={NavLink} activeClassName='activeMenuItem' exact to=''>Home</Link>

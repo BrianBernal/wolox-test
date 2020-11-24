@@ -1,5 +1,9 @@
+//  libraries
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { MdMenu } from 'react-icons/md';
+
+//  components
 import WrapperSection from 'UIElements/WrapperSection/WrapperSection';
 
 const menuBreakPoint = '800px';
@@ -13,7 +17,9 @@ export const HeaderWrapperSection = styled(WrapperSection)`
   
   @media screen and (max-width: ${menuBreakPoint}){
     padding-bottom: 1rem;
-  }
+    background-color: ${({ openMenu }) => (openMenu ? '#ddd' : 'inherit')};
+    transition-duration: 0.3s;
+  } 
 `;
 
 export const HeaderDiv = styled.div`
@@ -27,6 +33,7 @@ export const HeaderDiv = styled.div`
   @media screen and (max-width: ${menuBreakPoint}){
     justify-content: center;
     padding: 1rem;
+    padding-bottom: 0;
     img {
       display: none;
     }
@@ -39,11 +46,17 @@ export const MenuNav = styled.nav`
   align-items: center;
   min-width: 10 rem;
   width: max-content;
+  overflow: hidden;
   .activeMenuItem {
     border-bottom: ${({ theme }) => theme.palette.green} 2px solid;
   }
   @media screen and (max-width: ${menuBreakPoint}){
     flex-direction: column;
+    max-height: ${({ openMenu }) => (openMenu ? '90vh' : '3rem')};
+    visibility: ${({ openMenu }) => (openMenu ? 'visible' : 'hidden')};
+    transition-property: max-height;
+    transition-duration: 0.8s;
+    transition-timing-function: linear;
   }
 `;
 
@@ -67,4 +80,19 @@ export const Router = styled(NavLink)`
   color: ${({ theme }) => theme.palette.text};
   font-weight: 600;
   margin: 0 2rem;
+`;
+
+export const MenuIcon = styled(MdMenu)`
+  display: none;
+  
+  @media screen and (max-width: ${menuBreakPoint}){
+    display: block;
+    position: fixed;
+    right: 10%;
+    top: 30px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 `;
