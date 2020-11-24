@@ -20,6 +20,10 @@ export const WorkingWrapperSection = styled(MaxDivWrapperSection)`
     & .bigTitle {
       font-size: 54px;
     }
+
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+    }
   }
 `;
 
@@ -35,4 +39,8 @@ export const Box = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+
+  @media screen and (max-width: 900px) {
+    width: initial;
+  }
 `;

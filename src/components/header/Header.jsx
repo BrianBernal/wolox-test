@@ -1,8 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 //  libraries
-import React from 'react';
-
-//  hooks
-import useScrollY from 'hooks/useScrollY';
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 //  components
 import Button from 'UIElements/button/Button';
@@ -14,15 +13,33 @@ import {
 } from './styles';
 
 export default function Header() {
-  const scrollUp = useScrollY();
+  const [scrollUp, setScrollUp] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const pointY = window.scrollY;
+      const topScroll = pointY > 70;
+      if (topScroll) {
+        setScrollUp(false);
+      } else {
+        setScrollUp(true);
+      }
+    };
+    document.addEventListener('scroll', handleScroll);
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <HeaderWrapperSection scrollUp={scrollUp}>
       <HeaderDiv scrollUp={scrollUp}>
         <img src={logoFullColor} alt='logo wolox' width='171px' />
         <MenuNav>
-          <Link href='#start' className='menuItem' activeClassName='activeMenuItem'>Inicio</Link>
-          <Link href='#benefits' className='menuItem' activeClassName='activeMenuItem'>Beneficios</Link>
+          <Link href='#start' isActive={false}>Inicio</Link>
+          <Link href='#benefits' isActive={false}>Beneficios</Link>
+          <Link as={NavLink} activeClassName='activeMenuItem' exact to=''>Home</Link>
           <Button type='button'>Login</Button>
         </MenuNav>
       </HeaderDiv>

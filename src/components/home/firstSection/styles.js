@@ -9,8 +9,10 @@ import bgIlustraHero from 'assets/Img Hero/Ic_ilustra_Hero.png';
 import WrapperSection from 'UIElements/WrapperSection/WrapperSection';
 
 export const WelcomeWrapperSection = styled(WrapperSection)`
-  background: url(${bgImage}) no-repeat center center;
-  background-size: contain;
+  background-image: url(${bgIlustraHero}), url(${bgImage});
+  background-repeat: no-repeat;
+  background-position: 55vw 80%,center center;
+  background-size: 29vw 29vw, contain;
   height: 88vh;
   max-height: 45rem;
   margin-bottom: 4rem;
@@ -19,6 +21,16 @@ export const WelcomeWrapperSection = styled(WrapperSection)`
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  @media screen and (max-width: 500px) {
+    background-position: 47vw 80%,center center;
+    background-size: 45vw 45vw, contain;
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 1400px) {
+    background-size: 22vw 22vw, contain;
   }
 `;
 
@@ -30,14 +42,4 @@ export const H1 = styled.h1`
   & .green {
     color: ${({ theme }) => theme.palette.green};
   }
-`;
-
-export const ImageDiv = styled.div`
-  background: url(${bgIlustraHero}) no-repeat center center;
-  background-size: cover;
-  width: 400px;
-  height: 400px;
-  transform: scaleX(-1);
-  margin-right: 6rem;
-  margin-top: 6rem;
 `;
