@@ -1,20 +1,34 @@
+/* eslint-disable react/jsx-props-no-spreading */
 //  libraries
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 //  styles
 import paletteColors from 'styles/theme';
-import { StyledButton, StyledLink, ButtonSizes } from './styles';
+import { StyledButton, RouterButton, ButtonSizes } from './styles';
 
 export default function Button({
-  children, bgColor, fontColor, size, type, variant, onClick, href,
+  children,
+  bgColor: $bgColor, // Transient props ... styled components feature
+  fontColor: $fontColor, // Transient props ... styled components feature
+  size: $size, // Transient props ... styled components feature
+  type,
+  variant,
+  onClick,
+  href,
+  to,
 }) {
+  const styleProps = {
+    $bgColor,
+    $fontColor,
+    $size,
+  };
+
   if (variant === 'button') {
     return (
       <StyledButton
-        bgColor={bgColor}
-        fontColor={fontColor}
-        size={size}
+        {...styleProps}
         type={type}
         onClick={onClick}
       >
@@ -22,20 +36,31 @@ export default function Button({
       </StyledButton>
     );
   }
-  return (
-    <StyledLink
-      as='a'
-      bgColor={bgColor}
-      fontColor={fontColor}
-      size={size}
-      type={type}
-      onClick={onClick}
-      target='_blank'
-      href={href}
-    >
-      {children}
-    </StyledLink>
-  );
+
+  if (variant === 'hyperlink') {
+    return (
+      <StyledButton
+        {...styleProps}
+        as='a'
+        target='_blank'
+        href={href}
+      >
+        {children}
+      </StyledButton>
+    );
+  }
+
+  if (variant === 'router') {
+    return (
+      <RouterButton
+        {...styleProps}
+        to={to}
+        as={Link}
+      >
+        {children}
+      </RouterButton>
+    );
+  }
 }
 
 const { palette } = paletteColors;
@@ -47,9 +72,10 @@ Button.propTypes = {
   fontColor: oneOf(keys(palette)),
   size: oneOf(keys(ButtonSizes)),
   type: oneOf(['button', 'submit', 'reset']),
-  variant: oneOf(['button', 'hyperlink']),
+  variant: oneOf(['button', 'hyperlink', 'router']),
   onClick: PropTypes.func,
   href: PropTypes.string,
+  to: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -58,6 +84,7 @@ Button.defaultProps = {
   size: 'normal',
   type: 'button',
   variant: 'button',
-  onClick: () => {},
+  onClick: null,
   href: '/#',
+  to: '/',
 };

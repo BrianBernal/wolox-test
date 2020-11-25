@@ -44,3 +44,14 @@ export const Box = styled.div`
     width: initial;
   }
 `;
+
+export const TwitterDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .icon {
+    margin-right: 1rem;
+    color: ${({ theme }) => theme.palette.secondary}
+  }
+`;

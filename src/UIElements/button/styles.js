@@ -1,29 +1,47 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const ButtonSizes = {
   normal: {
     minWidth: '11rem',
-    height: '40px',
+    height: '36px',
     fontSize: '0.8rem',
   },
   big: {
     minWidth: '14rem',
-    height: '50px',
+    height: '46px',
     fontSize: '1rem',
   },
 };
 
-export const StyledButton = styled.button`
+const buttonStyles = css`
   ${({
-    theme, bgColor, fontColor, size,
+    theme, $bgColor, $fontColor, $size,
   }) => {
-    const { minWidth, height, fontSize } = ButtonSizes[size];
+    const { minWidth, height, fontSize } = ButtonSizes[$size];
     return `
-      background-color: ${theme.palette.background[bgColor]};
-      color: ${theme.palette[fontColor]};
+      background-color: ${theme.palette.background[$bgColor]};
+      color: ${theme.palette[$fontColor]};
       min-width: ${minWidth};
       height: ${height};
       font-size: ${fontSize};
+
+      text-decoration: none;
+      border-radius: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: solid 1px;
+      font-weight: bold;
+      border-color: ${theme.palette.blue};
+
+      &:focus {        
+        outline: none;
+        border-right-color: ${theme.palette.primary};
+      }
+      &:active {
+        transform: translate(0, 1px);
+      }
       &:hover {
         cursor: pointer;
         background-color: ${theme.palette.green};
@@ -32,24 +50,14 @@ export const StyledButton = styled.button`
         transition-property: background-color, color, border-color;
         transition-duration: 0.3s, 0.3s, 0.3s;
       }
-      &:focus {        
-        outline: none;
-        border-bottom-color: ${theme.palette.primary};
-      }
-      &:active {
-        transform: translate(0, 1px);
-      }
   `;
   }}
 `;
 
-export const StyledLink = styled(StyledButton)`
-  text-decoration: none;
-  border-radius: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: solid 1px;
-  font-weight: bold;
-  border-color: ${({ theme }) => theme.palette.blue}
+export const StyledButton = styled.button`
+  ${buttonStyles}
+`;
+
+export const RouterButton = styled(Link)`
+  ${buttonStyles}
 `;

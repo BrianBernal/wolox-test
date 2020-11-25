@@ -1,6 +1,5 @@
 //  libraries
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 import { MdMenu } from 'react-icons/md';
 
 //  components
@@ -47,6 +46,7 @@ export const MenuNav = styled.nav`
   min-width: 10 rem;
   width: max-content;
   overflow: hidden;
+  padding-bottom: 1px;
   .activeMenuItem {
     border-bottom: ${({ theme }) => theme.palette.green} 2px solid;
   }
@@ -65,7 +65,6 @@ export const Link = styled.a`
   color: ${({ theme }) => theme.palette.text};
   font-weight: 600;
   margin: 0 2rem;
-  border-bottom: ${({ theme, isActive }) => (isActive ? `${theme.palette.green} 2px solid;` : 'initial')};
   &:hover {
     border-bottom: ${({ theme }) => theme.palette.blue} 2px solid;
   }
@@ -73,13 +72,6 @@ export const Link = styled.a`
   @media screen and (max-width: ${menuBreakPoint}){
     margin: 1rem;
   }
-`;
-
-export const Router = styled(NavLink)`
-  text-decoration: none;
-  color: ${({ theme }) => theme.palette.text};
-  font-weight: 600;
-  margin: 0 2rem;
 `;
 
 export const MenuIcon = styled(MdMenu)`

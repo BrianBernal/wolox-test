@@ -1,8 +1,5 @@
 //  libraries
-import React, { Fragment, useRef } from 'react';
-
-//  hooks
-import useScrollY from 'hooks/useScrollY';
+import React, { Fragment } from 'react';
 
 //  components
 import Typography from 'UIElements/typography/Typography';
@@ -12,12 +9,10 @@ import benefitsItems from 'constants/benefitsItems';
 import { BenefitsWrapperSection, BenefitsListContainerDiv, Divider } from './styles';
 
 export default function ThirdSection() {
-  const sectionRef = useRef(null);
-  useScrollY('benefits', sectionRef);
   const emoji = ';)';
 
   return (
-    <BenefitsWrapperSection ref={sectionRef} id='benefits'>
+    <BenefitsWrapperSection id='benefits'>
       <div className='benefits-container'>
         <Typography variant='h5' weight='500'>Entre los beneficios que ofrecemos se encuentran
           <Typography color='blue' variant='span'> {emoji}</Typography>

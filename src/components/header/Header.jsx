@@ -1,6 +1,6 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 //  libraries
 import React, { useState, useEffect } from 'react';
+import { NavHashLink } from 'react-router-hash-link';
 import { NavLink } from 'react-router-dom';
 
 //  components
@@ -39,10 +39,10 @@ export default function Header() {
         <img src={logoFullColor} alt='logo wolox' width='171px' />
         <MenuIcon onClick={() => setOpenMenu((open) => !open)} />
         <MenuNav openMenu={openMenu}>
-          <Link href='#start' isActive={false}>Inicio</Link>
-          <Link href='#benefits' isActive={false}>Beneficios</Link>
-          <Link as={NavLink} activeClassName='activeMenuItem' exact to=''>Home</Link>
-          <Button type='button'>Login</Button>
+          <Link as={NavHashLink} activeClassName='activeMenuItem' exact smooth to='/#start'>Inicio</Link>
+          <Link as={NavHashLink} activeClassName='activeMenuItem' exact smooth to='/#benefits'>Beneficios</Link>
+          <Link as={NavLink} activeClassName='activeMenuItem' exact to='/listado'>Listado</Link>
+          <Button variant='router' to='/register'>Registro</Button>
         </MenuNav>
       </HeaderDiv>
     </HeaderWrapperSection>

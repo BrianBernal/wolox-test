@@ -6,7 +6,8 @@ import Typography from 'UIElements/typography/Typography';
 import Button from 'UIElements/button/Button';
 
 //  styles
-import { WorkingWrapperSection, Box } from './styles';
+import { FaTwitter } from 'react-icons/fa';
+import { WorkingWrapperSection, Box, TwitterDiv } from './styles';
 
 export default function SecondSection() {
   return (
@@ -17,7 +18,10 @@ export default function SecondSection() {
             350 +
             <Typography variant='span' color='blue'> Woloxers</Typography>
           </Typography>
-          <Typography color='secondary'>@Wolox</Typography>
+          <TwitterDiv>
+            <FaTwitter fontSize='2rem' className='icon' />
+            <Typography color='secondary'>@Wolox</Typography>
+          </TwitterDiv>
           <Button
             size='big'
             fontColor='secondary'
