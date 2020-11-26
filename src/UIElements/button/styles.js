@@ -33,7 +33,7 @@ const buttonStyles = css`
       align-items: center;
       border: solid 1px;
       font-weight: bold;
-      border-color: ${theme.palette.blue};
+      border-color: ${$bgColor === 'green' ? theme.palette.green : theme.palette.blue};
 
       &:focus {        
         outline: none;
@@ -44,8 +44,8 @@ const buttonStyles = css`
       }
       &:hover {
         cursor: pointer;
-        background-color: ${theme.palette.green};
-        border-color: ${theme.palette.green};
+        background-color: ${$bgColor === 'green' ? theme.palette.blue : theme.palette.green};
+        border-color: ${$bgColor === 'green' ? theme.palette.blue : theme.palette.green};
         color: ${theme.palette.secondary};
         transition-property: background-color, color, border-color;
         transition-duration: 0.3s, 0.3s, 0.3s;

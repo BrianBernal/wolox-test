@@ -191,4 +191,29 @@ export default createGlobalStyle`
     font-size: 0.8rem;
     font-weight: bold;
   }
+
+  input, select {
+    border-radius: 30px;
+    width: 10rem;
+    background-color: rgba(29, 38, 58, 0.6);
+    color: ${theme.palette.secondary};
+    border: rgba(29, 38, 58, 0.6) 1px solid;
+    padding: 10px;
+    font-family: fira, montserrat, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    &:focus {
+      border: ${theme.palette.secondary} 1px solid;
+      outline: none;
+    }
+  }
+
+  label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    
+    & span {
+      margin-left: 14px;
+    }
+  }
 `;
