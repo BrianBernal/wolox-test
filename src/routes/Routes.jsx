@@ -1,19 +1,22 @@
 //  libraries
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter, Route, Switch, Redirect,
+} from 'react-router-dom';
+
+//  constants
+import viewsList from 'constants/viewsList';
 
 //  components
 import Header from 'components/header/Header';
-import Home from 'views/home/Home';
-import Register from 'views/register/Register';
 
 export default function Routes() {
   return (
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route exact path='/'><Home /></Route>
-        <Route path='/register'><Register /></Route>
+        {viewsList.map(({ path, Component }) => <Route exact path={path} key='path'><Component /></Route>)}
+        <Redirect to='/' />
       </Switch>
     </BrowserRouter>
   );

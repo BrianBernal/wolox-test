@@ -39,10 +39,10 @@ const buttonStyles = css`
         outline: none;
         border-right-color: ${theme.palette.primary};
       }
-      &:enabled:active {
+      &:active {
         transform: translate(0, 1px);
       }
-      &:enabled:hover {
+      &:hover {
         cursor: pointer;
         background-color: ${$bgColor === 'green' ? theme.palette.blue : theme.palette.green};
         border-color: ${$bgColor === 'green' ? theme.palette.blue : theme.palette.green};
@@ -54,6 +54,10 @@ const buttonStyles = css`
         background-color: #bbb;
         border-color: #bbb;
         color: #ddd;
+        cursor: default;
+      }
+      &:disabled:active {
+        transform: none;
       }
   `;
   }}

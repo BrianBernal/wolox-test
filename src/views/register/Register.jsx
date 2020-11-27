@@ -1,11 +1,11 @@
 //  libraries
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 //  constants
 import provincesList from 'constants/provinces';
 
-//  validator tools
+//  validators and tools
 import {
   textValidator,
   phoneValidator,
@@ -13,10 +13,16 @@ import {
   emailValidator,
   passwordValidator,
 } from 'tools/formValidators';
+import API from 'API';
+import { saveStorage } from 'tools/storage';
+
+//  hooks
+import { useHistory } from 'react-router-dom';
 
 //  components
 import Typography from 'UIElements/typography/Typography';
 import Button from 'UIElements/button/Button';
+import Loader from 'UIElements/loader/Loader';
 
 //  styles
 import {
@@ -24,22 +30,34 @@ import {
 } from './styles';
 
 export default function Register() {
+  const history = useHistory();
   const {
     register, handleSubmit, errors, watch, setError,
   } = useForm();
+  const [loading, setLoading] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const countries = Object.keys(provincesList);
   const watchCountry = watch('country');
   const provinces = provincesList[watchCountry] || [];
 
-  const onSubmit = ({ confirmPassword, terms, ...data }) => {
-    if (data.password !== confirmPassword) {
+  const onSubmit = ({ confirmPassword, terms, ...payload }) => {
+    if (payload.password !== confirmPassword) {
       setError('confirmPassword', {
         type: 'manual',
         message: 'Las contraseñas deben coincidir.',
       });
       return;
     }
-    console.log(data);
+    setLoading(true);
+    API.authService.signup(payload)
+      .then(({ data }) => {
+        saveStorage('token', data.token);
+        history.push('/TechList');
+      })
+      .catch(() => {
+        setShowToast(true);
+      })
+      .finally(() => { setLoading(false); });
   };
 
   const renderEmptyOption = () => <option value=''>Seleccione...</option>;
@@ -114,15 +132,16 @@ export default function Register() {
             {errors.terms
               && <ErrorSpan>Debes aceptar los terminos y condiciones para continuar.</ErrorSpan>}
           </label>
+          {showToast && <ErrorSpan>¡Conexión Fallida!</ErrorSpan>}
         </RowDiv>
         <Button
           type='submit'
           size='big'
           bgColor='green'
           fontColor='secondary'
-          disabled={Object.keys(errors).length > 0}
+          disabled={Object.keys(errors).length > 0 || loading}
         >
-          Registartme
+          Registartme {loading && <Loader />}
         </Button>
       </Form>
     </ContainerDiv>

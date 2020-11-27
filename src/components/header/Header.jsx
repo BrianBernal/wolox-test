@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { NavHashLink } from 'react-router-hash-link';
 import { NavLink } from 'react-router-dom';
 
+//  utils
+import { loadStorage } from 'tools/storage';
+
 //  components
 import Button from 'UIElements/button/Button';
 
@@ -13,6 +16,7 @@ import {
 } from './styles';
 
 export default function Header() {
+  const isLogged = loadStorage('token') || false; // cambiarlo a un custom hook cuando implemente redux
   const [scrollUp, setScrollUp] = useState(true);
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -41,7 +45,7 @@ export default function Header() {
         <MenuNav openMenu={openMenu}>
           <Link as={NavHashLink} activeClassName='activeMenuItem' exact smooth to='/#start'>Inicio</Link>
           <Link as={NavHashLink} activeClassName='activeMenuItem' exact smooth to='/#benefits'>Beneficios</Link>
-          <Link as={NavLink} activeClassName='activeMenuItem' exact to='/listado'>Listado</Link>
+          {isLogged && <Link as={NavLink} activeClassName='activeMenuItem' exact to='/techlist'>Listado</Link>}
           <Button variant='router' to='/register'>Registro</Button>
         </MenuNav>
       </HeaderDiv>

@@ -9,7 +9,7 @@ export const ContainerDiv = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 85vh;
-  background: url(${bgSection}) no-repeat center 0;
+  background: url(${bgSection}) repeat center 0;
   background-size: contain;
 
   h2 {
