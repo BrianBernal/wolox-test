@@ -47,14 +47,6 @@ export const Form = styled.form`
   }
 `;
 
-export const LabelWrapper = styled.label`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin: 0.5rem 1rem;
-`;
-
 export const RowDiv = styled.div`
   display: flex;
   flex-direction: ${({ column }) => (column ? 'column' : 'row')};
@@ -68,4 +60,44 @@ export const RowDiv = styled.div`
   @media screen and (max-width: 600px){
     flex-direction: column;
   }
+`;
+
+export const LabelWrapper = styled.label`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0.5rem 1rem;
+  input, select {
+    border: ${({ $error }) => ($error ? 'red' : 'rgba(29, 38, 58, 0.6)')} 1px solid;
+  }
+`;
+
+export const TermsDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-transform: none;
+  font-family: montserrat, fira, 'Times New Roman', Times, serif;
+  font-weight: normal;
+  margin: 0.5rem 0;
+
+  input[type='checkbox'] {
+    width: 1rem;
+  }
+
+  a {
+    color: ${({ theme }) => theme.palette.blue};
+    font-style: italic;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const ErrorSpan = styled.div`
+  color: red;
+  text-transform: none;
+  font-weight: normal;
 `;

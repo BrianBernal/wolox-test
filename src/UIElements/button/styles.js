@@ -39,16 +39,21 @@ const buttonStyles = css`
         outline: none;
         border-right-color: ${theme.palette.primary};
       }
-      &:active {
+      &:enabled:active {
         transform: translate(0, 1px);
       }
-      &:hover {
+      &:enabled:hover {
         cursor: pointer;
         background-color: ${$bgColor === 'green' ? theme.palette.blue : theme.palette.green};
         border-color: ${$bgColor === 'green' ? theme.palette.blue : theme.palette.green};
         color: ${theme.palette.secondary};
         transition-property: background-color, color, border-color;
         transition-duration: 0.3s, 0.3s, 0.3s;
+      }
+      &:disabled {
+        background-color: #bbb;
+        border-color: #bbb;
+        color: #ddd;
       }
   `;
   }}

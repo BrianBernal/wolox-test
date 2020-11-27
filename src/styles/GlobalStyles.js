@@ -203,7 +203,15 @@ export default createGlobalStyle`
     font-size: 1rem;
     &:focus {
       border: ${theme.palette.secondary} 1px solid;
-      outline: none;
+      outline: none !important;
+    }
+  }
+
+  input[type='checkbox'] {
+    width: 1rem;
+    height: 1rem;
+    &:hover {
+      cursor: pointer;
     }
   }
 

@@ -37,7 +37,7 @@ export default function Header() {
     <HeaderWrapperSection scrollUp={scrollUp} openMenu={openMenu}>
       <HeaderDiv scrollUp={scrollUp}>
         <img src={logoFullColor} alt='logo wolox' width='171px' />
-        <MenuIcon size='2rem' onClick={() => setOpenMenu((open) => !open)} />
+        <MenuIcon fontSize='2rem' onClick={() => setOpenMenu((open) => !open)} />
         <MenuNav openMenu={openMenu}>
           <Link as={NavHashLink} activeClassName='activeMenuItem' exact smooth to='/#start'>Inicio</Link>
           <Link as={NavHashLink} activeClassName='activeMenuItem' exact smooth to='/#benefits'>Beneficios</Link>

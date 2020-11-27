@@ -18,6 +18,7 @@ export default function Button({
   onClick,
   href,
   to,
+  disabled: disabledProp,
 }) {
   const styleProps = {
     $bgColor,
@@ -26,9 +27,11 @@ export default function Button({
   };
 
   if (variant === 'button') {
+    const disabledValue = disabledProp ? { disabled: true } : {};
     return (
       <StyledButton
         {...styleProps}
+        {...disabledValue}
         type={type}
         onClick={onClick}
       >
@@ -44,6 +47,7 @@ export default function Button({
         as='a'
         target='_blank'
         href={href}
+        rel='noopener noreferrer'
       >
         {children}
       </StyledButton>
@@ -76,6 +80,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   href: PropTypes.string,
   to: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -87,4 +92,5 @@ Button.defaultProps = {
   onClick: null,
   href: '/#',
   to: '/',
+  disabled: false,
 };
