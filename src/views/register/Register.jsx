@@ -13,11 +13,12 @@ import {
   emailValidator,
   passwordValidator,
 } from 'tools/formValidators';
-import API from 'API';
-import { saveStorage } from 'tools/storage';
 
 //  hooks
-import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+//  redux
+import { authSignupRequest } from 'redux/ducks/auth/actions';
 
 //  components
 import Typography from 'UIElements/typography/Typography';
@@ -30,11 +31,11 @@ import {
 } from './styles';
 
 export default function Register() {
-  const history = useHistory();
+  const dispatch = useDispatch();
   const {
     register, handleSubmit, errors, watch, setError,
   } = useForm();
-  const [loading, setLoading] = useState(false);
+  const loading = useSelector((state) => state.session.loading);
   const [showToast, setShowToast] = useState(false);
   const countries = Object.keys(provincesList);
   const watchCountry = watch('country');
@@ -48,16 +49,10 @@ export default function Register() {
       });
       return;
     }
-    setLoading(true);
-    API.authService.signup(payload)
-      .then(({ data }) => {
-        saveStorage('token', data.token);
-        history.push('/TechList');
-      })
-      .catch(() => {
-        setShowToast(true);
-      })
-      .finally(() => { setLoading(false); });
+    dispatch(authSignupRequest(
+      payload,
+      () => { setShowToast(true); },
+    ));
   };
 
   const renderEmptyOption = () => <option value=''>Seleccione...</option>;

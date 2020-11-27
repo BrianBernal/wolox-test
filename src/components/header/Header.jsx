@@ -1,10 +1,13 @@
 //  libraries
 import React, { useState, useEffect } from 'react';
 import { NavHashLink } from 'react-router-hash-link';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
-//  utils
-import { loadStorage } from 'tools/storage';
+//  hooks
+import { useDispatch, useSelector } from 'react-redux';
+
+//  redux
+import { authLogin, authSignout } from 'redux/ducks/auth/actions';
 
 //  components
 import Button from 'UIElements/button/Button';
@@ -12,13 +15,20 @@ import Button from 'UIElements/button/Button';
 //  styles
 import { logoFullColor } from 'assets';
 import {
-  HeaderWrapperSection, HeaderDiv, MenuNav, Link, MenuIcon,
+  HeaderWrapperSection, HeaderDiv, MenuNav, Link, MenuIcon, TextButton,
 } from './styles';
 
 export default function Header() {
-  const isLogged = loadStorage('token') || false; // cambiarlo a un custom hook cuando implemente redux
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const isLogged = useSelector((state) => state.session.isLogged);
   const [scrollUp, setScrollUp] = useState(true);
   const [openMenu, setOpenMenu] = useState(false);
+
+  useEffect(() => {
+    if (isLogged) { history.push('/techlist'); }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLogged]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,11 +41,20 @@ export default function Header() {
       }
     };
     document.addEventListener('scroll', handleScroll);
+    if (isLogged) history.push('/techlist');
     return () => {
       document.removeEventListener('scroll', handleScroll);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleSignout = () => {
+    dispatch(authSignout());
+  };
+
+  const handleLogin = () => {
+    dispatch(authLogin());
+  };
 
   return (
     <HeaderWrapperSection scrollUp={scrollUp} openMenu={openMenu}>
@@ -45,8 +64,18 @@ export default function Header() {
         <MenuNav openMenu={openMenu}>
           <Link as={NavHashLink} activeClassName='activeMenuItem' exact smooth to='/#start'>Inicio</Link>
           <Link as={NavHashLink} activeClassName='activeMenuItem' exact smooth to='/#benefits'>Beneficios</Link>
-          {isLogged && <Link as={NavLink} activeClassName='activeMenuItem' exact to='/techlist'>Listado</Link>}
-          <Button variant='router' to='/register'>Registro</Button>
+          {isLogged
+            ? (
+              <>
+                <Link as={NavLink} activeClassName='activeMenuItem' exact to='/techlist'>Listado</Link>
+                <TextButton onClick={handleSignout} className='signout'>Cerrar Sesión</TextButton>
+              </>
+            ) : (
+              <>
+                <TextButton onClick={handleLogin} className='signout'>Iniciar Sesión</TextButton>
+                <Button variant='router' to='/register'>Registro</Button>
+              </>
+            )}
         </MenuNav>
       </HeaderDiv>
     </HeaderWrapperSection>

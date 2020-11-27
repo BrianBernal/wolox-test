@@ -25,6 +25,7 @@ export const HeaderDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 2rem;
   padding: ${({ scrollUp }) => (scrollUp ? '3rem' : '1rem')} 3rem;
   transition-property: padding;
   transition-duration: 0.5s;
@@ -49,6 +50,10 @@ export const MenuNav = styled.nav`
   padding-bottom: 1px;
   .activeMenuItem {
     border-bottom: ${({ theme }) => theme.palette.green} 2px solid;
+  }
+  .signout {
+    font-size: 0.9rem;
+    color: ${({ theme }) => theme.palette.blue};  
   }
   @media screen and (max-width: ${menuBreakPoint}){
     flex-direction: column;
@@ -86,5 +91,21 @@ export const MenuIcon = styled(MdMenu)`
     &:hover {
       cursor: pointer;
     }
+  }
+`;
+
+export const TextButton = styled.button`
+  border: none;
+  color: ${({ theme }) => theme.palette.text};
+  font-size: 1rem;
+  font-weight: normal;
+  border-radius: initial;
+  min-width: initial;
+  min-height: initial;
+  height: max-content;
+  margin: 0 1rem;
+  &:hover {
+    border-bottom: ${({ theme }) => theme.palette.blue} 2px solid;
+    cursor: pointer;
   }
 `;

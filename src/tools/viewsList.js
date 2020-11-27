@@ -1,6 +1,3 @@
-//  utils
-import { loadStorage } from 'tools/storage';
-
 //  components
 import Home from 'views/home/Home';
 import Register from 'views/register/Register';
@@ -21,10 +18,10 @@ const routes = [
   },
 ];
 
-function getList() {
-  const privateRoutes = ['/techlist'];
-  const isLogged = loadStorage('token') || false;
-  return isLogged ? routes : routes.filter(({ path }) => !privateRoutes.includes(path));
+export default function viewsList(isLogged) {
+  const forbiddenLoggedRoutes = ['/register'];
+  const forbiddenLogoutRoutes = ['/techlist'];
+  return isLogged
+    ? routes.filter(({ path }) => !forbiddenLoggedRoutes.includes(path))
+    : routes.filter(({ path }) => !forbiddenLogoutRoutes.includes(path));
 }
-
-export default getList();
