@@ -2,8 +2,12 @@ import styled from 'styled-components';
 import { ContainerDiv } from 'views/register/styles';
 
 export const ContainerViewDiv = styled(ContainerDiv)`
+  justify-content: flex-start;
   h2 {
     align-self: center;
+  }
+  input, select {
+    margin: 3px 0.5rem;
   }
 `;
 
@@ -19,13 +23,14 @@ export const CardDiv = styled.div`
   text-align: center;
 `;
 
-export const ContainerCardsDiv = styled.div`
+export const ContainerSectionDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   max-width: 1100px;
   background-color: #fff;
+  margin: 1rem 0;
 
   b {
     font-size: 1.4rem;
