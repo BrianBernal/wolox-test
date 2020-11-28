@@ -11,7 +11,10 @@ import { techlistRequest } from 'redux/ducks/techList/actions';
 import Typography from 'UIElements/typography/Typography';
 
 //  styles
-import { CardDiv, ContainerSectionDiv, ContainerViewDiv } from './styles';
+import { MdFavoriteBorder } from 'react-icons/md';
+import {
+  CardDiv, ContainerSectionDiv, ContainerViewDiv, IconButtonDiv,
+} from './styles';
 
 function asc(a, b) {
   if (a.tech.toLowerCase() < b.tech.toLowerCase()) {
@@ -58,14 +61,7 @@ export default function TechList() {
     setTechlist(filteredList);
   };
 
-  useEffect(() => {
-    if (searchText.length % 2 === 0 && data.length > 0) {
-      runSearching();
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, searchText]);
-
-  useEffect(() => {
+  const runSorting = () => {
     if (sort === 'asc') {
       const sorted = techlist.slice();
       sorted.sort(asc);
@@ -77,6 +73,17 @@ export default function TechList() {
     } else {
       runSearching();
     }
+  };
+
+  useEffect(() => {
+    if (searchText.length % 2 === 0 && data.length > 0) {
+      runSearching();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, searchText]);
+
+  useEffect(() => {
+    runSorting();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sort]);
 
@@ -103,12 +110,15 @@ export default function TechList() {
             <Typography><i>Autor: </i>{author}</Typography>
             <Typography><i>Año: </i>{year}</Typography>
             <Typography><i>Licencia: </i>{license}</Typography>
+            <IconButtonDiv onClick={() => { }}>
+              <MdFavoriteBorder fontSize='2rem' />
+            </IconButtonDiv>
           </CardDiv>
         ))}
         {showError && <Typography><i>Error de conexión.</i></Typography>}
         {loading && <Typography><i>Cargando...</i></Typography>}
       </ContainerSectionDiv>
-      {!loading && !showError && <Typography variant='h2' color='text'><i>Total Tecnologías: </i>{data.length}</Typography>}
+      {!loading && !showError && <Typography variant='h2' color='text'><i>Total Tecnologías: </i>{techlist.length}</Typography>}
     </ContainerViewDiv>
   );
 }

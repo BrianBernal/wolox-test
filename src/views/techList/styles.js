@@ -42,4 +42,15 @@ export const ContainerSectionDiv = styled.div`
   }
 `;
 
-export default CardDiv;
+export const IconButtonDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 9px;
+  padding: 10px;
+  border-radius: 50px;
+  &:hover {
+    background-color: rgba(120, 120, 120, 0.3);
+    cursor: pointer;
+  }
+`;
