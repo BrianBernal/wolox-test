@@ -21,6 +21,10 @@ export const WelcomeWrapperSection = styled(WrapperSection)`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and (max-width: 350px){
+      padding: 0;
+    }
   }
 
   @media screen and (max-width: 500px) {

@@ -7,6 +7,10 @@ import WrapperSection from 'UIElements/WrapperSection/WrapperSection';
 export const BenefitsWrapperSection = styled(WrapperSection)`
   text-align: center;
   .benefits-container {
+    @media screen and (max-width: 350px){
+      padding-left: 5px;
+      padding-right: 5px;
+    }
   }
 `;
 

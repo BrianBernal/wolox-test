@@ -103,7 +103,7 @@ export const TextButton = styled.button`
   min-width: initial;
   min-height: initial;
   height: max-content;
-  margin: 0 1rem;
+  margin: 5px 1rem;
   &:hover {
     border-bottom: ${({ theme }) => theme.palette.blue} 2px solid;
     cursor: pointer;
