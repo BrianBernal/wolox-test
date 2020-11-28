@@ -15,7 +15,7 @@ export default (state = initialState, action) => {
     case types.FAVORITE_TECHS_DELETE:
       return {
         ...state,
-        favoriteTechs: state.favoriteTechs.map((tech) => tech !== action.tech),
+        favoriteTechs: state.favoriteTechs.filter((tech) => tech !== action.tech),
       };
 
     default:
