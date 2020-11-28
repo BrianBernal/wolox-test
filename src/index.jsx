@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 
 //  redux
 import { Provider } from 'react-redux';
-import store from 'redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persist } from 'redux/store';
 
 // testing
 import reportWebVitals from './reportWebVitals';
@@ -15,7 +16,9 @@ import App from './App';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <PersistGate persistor={persist} loading={<h1>loading</h1>}>
+        <App />
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),

@@ -11,7 +11,8 @@ import { techlistRequest } from 'redux/ducks/techList/actions';
 import Typography from 'UIElements/typography/Typography';
 
 //  styles
-import { MdFavoriteBorder } from 'react-icons/md';
+import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
+import { favoriteTechsAdd, favoriteTechsDelete } from 'redux/ducks/ui/actions';
 import {
   CardDiv, ContainerSectionDiv, ContainerViewDiv, IconButtonDiv,
 } from './styles';
@@ -39,6 +40,7 @@ function des(a, b) {
 export default function TechList() {
   const dispatch = useDispatch();
   const { data, loading } = useSelector((state) => state.techlist);
+  const favoriteTechs = useSelector((state) => state.ui.favoriteTechs);
   const [techlist, setTechlist] = useState([]);
   const [showError, setShowError] = useState(false);
   const [searchText, setSearchText] = useState('');
@@ -87,6 +89,20 @@ export default function TechList() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sort]);
 
+  const handleFavorite = (reduxAction, tech) => () => {
+    dispatch(reduxAction(tech));
+  };
+
+  const renderFavoriteButton = (tech) => {
+    const isFavorite = favoriteTechs.includes(tech);
+    const reduxAction = isFavorite ? favoriteTechsDelete : favoriteTechsAdd;
+    return (
+      <IconButtonDiv onClick={handleFavorite(reduxAction, tech)}>
+        {isFavorite ? <MdFavorite fontSize='2rem' /> : <MdFavoriteBorder fontSize='2rem' />}
+      </IconButtonDiv>
+    );
+  };
+
   return (
     <ContainerViewDiv>
       <Typography variant='h1' color='green'>Tech List</Typography>
@@ -110,9 +126,7 @@ export default function TechList() {
             <Typography><i>Autor: </i>{author}</Typography>
             <Typography><i>Año: </i>{year}</Typography>
             <Typography><i>Licencia: </i>{license}</Typography>
-            <IconButtonDiv onClick={() => { }}>
-              <MdFavoriteBorder fontSize='2rem' />
-            </IconButtonDiv>
+            {renderFavoriteButton(tech)}
           </CardDiv>
         ))}
         {showError && <Typography><i>Error de conexión.</i></Typography>}
