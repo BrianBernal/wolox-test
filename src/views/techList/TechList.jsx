@@ -52,13 +52,12 @@ export default function TechList() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const runSearching = () => {
-    const search = searchText.toLocaleLowerCase();
+  const runSearching = (textValue) => {
     const filteredList = searchText.length === 0
       ? data
       : data.filter(({ tech, type }) => (
-        tech.toLocaleLowerCase().includes(search)
-            || type.toLocaleLowerCase().includes(search)
+        tech.toLowerCase().includes(textValue)
+            || type.toLowerCase().includes(textValue)
       ));
     setTechlist(filteredList);
   };
@@ -78,8 +77,9 @@ export default function TechList() {
   };
 
   useEffect(() => {
-    if (searchText.length % 2 === 0 && data.length > 0) {
-      runSearching();
+    const inputText = searchText.trim().split(' ')[0];
+    if (inputText.length % 2 === 0 && data.length > 0) {
+      runSearching(inputText.toLowerCase());
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, searchText]);
