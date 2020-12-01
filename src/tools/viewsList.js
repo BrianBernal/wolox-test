@@ -1,7 +1,10 @@
+//  libraries
+import { lazy } from 'react';
+
 //  components
-import Home from 'views/home/Home';
-import Register from 'views/register/Register';
-import TechList from 'views/techList/TechList';
+const Home = lazy(() => import('views/home/Home'));
+const Register = lazy(() => import('views/register/Register'));
+const TechList = lazy(() => import('views/techList/TechList'));
 
 const routes = [
   {
