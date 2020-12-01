@@ -15,13 +15,14 @@ import Button from 'UIElements/button/Button';
 //  styles
 import { logoFullColor } from 'assets';
 import {
-  HeaderWrapperSection, HeaderDiv, MenuNav, Link, MenuIcon, TextButton,
+  HeaderWrapperSection, HeaderDiv, MenuNav, Link, MenuIcon, TextButton, FavoritesP,
 } from './styles';
 
 export default function Header() {
   const dispatch = useDispatch();
   const history = useHistory();
   const isLogged = useSelector((state) => state.session.isLogged);
+  const favorites = useSelector((state) => state.ui.favoriteTechs.length);
   const [scrollUp, setScrollUp] = useState(true);
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -62,6 +63,7 @@ export default function Header() {
         <img src={logoFullColor} alt='logo wolox' width='171px' />
         <MenuIcon fontSize='2rem' onClick={() => setOpenMenu((open) => !open)} />
         <MenuNav openMenu={openMenu}>
+          {favorites > 0 && isLogged && <FavoritesP><i>Favoitas: </i>{favorites}</FavoritesP>}
           <Link as={NavHashLink} activeClassName='activeMenuItem' exact smooth to='/#start'>Inicio</Link>
           <Link as={NavHashLink} activeClassName='activeMenuItem' exact smooth to='/#benefits'>Beneficios</Link>
           {isLogged

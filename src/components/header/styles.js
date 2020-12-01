@@ -109,3 +109,8 @@ export const TextButton = styled.button`
     cursor: pointer;
   }
 `;
+
+export const FavoritesP = styled.p`
+  margin: 0 1rem;
+  text-align: center;
+`;
